@@ -1,5 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
 
+:root {
+    --main-color: #c60000;
+    --blue: #0058e6;
+    --pink-light: #ff577e;
+    --pink-dark: #ff426e;
+    --cyan-light: #54afff;
+    --white: #ffffff;
+    --white-alpha-60: rgba(255,255,255,0.60);
+    --white-alpha-25: rgba(255,255,255,0.25);
+    --backdrop-filter-blur: blur(5px);
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -12,20 +24,26 @@ body {
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    background-color: #1bb296;
+    background-image: linear-gradient(to bottom right, var(--pink-light), var(--cyan-light));
+    background-attachment: fixed;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .wrapper {
-    width: 430px;
-    background: #fff;
-    border-radius: 10px;
+
+    width: 450px;
+    background-color: var(--white-alpha-25);
+    border: 1px solid var(--white-alpha-60);
+    /* min-height: 90vh; */
+    border-radius: 30px;
+    backdrop-filter: var(--backdrop-filter-blur);
 }
 
 .wrapper h1 {
     font-size: 25px;
     font-weight: 500;
     padding: 20px 25px;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid var(--white-alpha-60);
 }
 
 .wrapper .content {
@@ -48,7 +66,7 @@ body {
 .inputs input {
     height: 57px;
     width: 56px;
-    color: #1bb296;
+    color: var(--blue);
     margin: 4px;
     font-size: 24px;
     font-weight: 500;
@@ -56,7 +74,7 @@ body {
     border-radius: 5px;
     text-transform: uppercase;
     background: none;
-    border: 1px solid #ccc;
+    border: 1px solid var(--white-alpha-60);
 }
 
 .inputs input:first-child {
@@ -74,12 +92,100 @@ body {
 
 .content .reset-btn {
     width: 100%;
+
+    line-height: 1.5;
+    background-color: var(--white-alpha-25);
+    border: 1px solid var(--white-alpha-60);
+    padding: 10px 28px;
+    display: inline-block;
+    border-radius: 30px;
+    color: var(--main-color);
+    font-weight: 500;
+    text-transform: capitalize;
+    font-family: inherit;
+    font-size: 16px;
     cursor: pointer;
-    outline: none;
-    border: none;
-    color: #fff;
-    background: #1bb296;
-    font-size: 17px;
-    padding: 15px 0;
-    border-radius: 5px;
+    user-select: none;
+    position: relative;
+    overflow: hidden;
+    vertical-align: middle;
+    transition: color 0.3s ease;
+}
+
+.content .reset-btn::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 0%;
+    background-color: var(--main-color);
+    z-index: -1;
+    transition: width 0.3s ease;
+}
+
+.content .reset-btn:hover::before {
+    width: 100%;
+}
+
+.content .reset-btn:hover {
+    color: var(--white);
+}
+
+@media screen and (min-width: 278px) {
+    .wrapper {
+        margin: 15px;
+    }
+    .wrapper h1 {
+        font-size: 18px;
+    }
+    .inputs input {
+        height: 34px;
+        width: 33px;
+        margin: 3.5px;
+        font-size: 14px;
+        background: none;
+        border: 1px solid var(--white-alpha-60);
+    }
+    .details p {
+        font-size: 14px;
+    }
+}
+
+@media screen and (min-width: 353px) {
+    .wrapper {
+        margin: 20px;
+    }
+    .wrapper h1 {
+        font-size: 20px;
+    }
+    .inputs input {
+        height: 37px;
+        width: 36px;
+        margin: 4px;
+        font-size: 18px;
+        background: none;
+        border: 1px solid var(--white-alpha-60);
+    }
+    .details p {
+        font-size: 15px;
+    }
+}
+
+
+@media screen and (min-width: 576px) {
+    .wrapper h1 {
+        font-size: 24px;
+    }
+    .inputs input {
+        height: 57px;
+        width: 56px;
+        margin: 4px;
+        font-size: 20px;
+        background: none;
+        border: 1px solid var(--white-alpha-60);
+    }
+    .details p {
+        font-size: 18px;
+    }
 }
